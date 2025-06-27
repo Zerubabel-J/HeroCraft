@@ -1,0 +1,10 @@
+{
+  "title": "Premium Wireless Headphones",
+  "description": "<p>Experience crystal-clear sound with our <strong>premium wireless headphones</strong>. Featuring advanced noise cancellation technology and up to 30 hours of battery life.</p><p>Perfect for music lovers, professionals, and anyone who demands the best audio experience.</p>",
+  "main_image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=400&fit=crop&crop=center",
+  "secondary_image": "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=300&h=200&fit=crop&crop=center",
+  "button_label": "Shop Now",
+  "button_link": "/products/premium-wireless-headphones",
+  "color_style": "background-1",
+  "layout": "image-left"
+}
