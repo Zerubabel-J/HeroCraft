@@ -1,0 +1,259 @@
+{% comment %}
+  Product Hero Section
+  A versatile, responsive product promotion section for Shopify themes
+{% endcomment %}
+
+{%- liquid
+  assign section_id = 'product-hero-' | append: section.id
+  assign layout_class = section.settings.layout | default: 'image-left'
+  assign color_scheme = section.settings.color_style | default: 'background-1'
+-%}
+
+<section id="{{ section_id }}" class="section section-{{ section.id }}-padding color-{{ color_scheme }}">
+  <div class="page-width">
+    <div class="product-hero product-hero--{{ layout_class }}">
+      
+      <!-- Product Image Container -->
+      <div class="product-hero__image-container">
+        {%- if section.settings.main_image -%}
+          <div class="product-hero__main-image">
+            {{ section.settings.main_image | image_url: width: 600 | image_tag: 
+               loading: 'lazy',
+               alt: section.settings.main_image.alt | default: section.settings.title,
+               class: 'product-hero__image'
+            }}
+          </div>
+        {%- endif -%}
+        
+        {%- if section.settings.secondary_image -%}
+          <div class="product-hero__secondary-image">
+            {{ section.settings.secondary_image | image_url: width: 300 | image_tag: 
+               loading: 'lazy',
+               alt: section.settings.secondary_image.alt,
+               class: 'product-hero__image product-hero__image--secondary'
+            }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Product Content Container -->
+      <div class="product-hero__content">
+        {%- if section.settings.title != blank -%}
+          <h2 class="product-hero__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        
+        {%- if section.settings.description != blank -%}
+          <div class="product-hero__description">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+        
+        {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+          <div class="product-hero__button-container">
+            <a href="{{ section.settings.button_link }}" class="button button--primary product-hero__button">
+              {{ section.settings.button_label }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-hero {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem 0;
+  }
+
+  .product-hero--image-right {
+    flex-direction: row-reverse;
+  }
+
+  .product-hero__image-container {
+    flex: 1;
+    position: relative;
+  }
+
+  .product-hero__main-image {
+    position: relative;
+    z-index: 2;
+  }
+
+  .product-hero__secondary-image {
+    position: absolute;
+    bottom: -1rem;
+    right: -1rem;
+    z-index: 1;
+    max-width: 40%;
+  }
+
+  .product-hero__image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-hero__image--secondary {
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-hero__content {
+    flex: 1;
+    max-width: 500px;
+  }
+
+  .product-hero__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+  }
+
+  .product-hero__description {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: rgba(var(--color-foreground), 0.8);
+  }
+
+  .product-hero__description p {
+    margin: 0 0 1rem 0;
+  }
+
+  .product-hero__description p:last-child {
+    margin-bottom: 0;
+  }
+
+  .product-hero__button-container {
+    margin-top: 1.5rem;
+  }
+
+  .product-hero__button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: rgb(var(--color-button));
+    color: rgb(var(--color-button-text));
+    text-decoration: none;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .product-hero__button:hover {
+    background-color: rgb(var(--color-button-hover));
+    transform: translateY(-1px);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .product-hero {
+      flex-direction: column !important;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .product-hero__title {
+      font-size: 2rem;
+    }
+
+    .product-hero__description {
+      font-size: 1rem;
+    }
+
+    .product-hero__secondary-image {
+      max-width: 30%;
+      bottom: -0.5rem;
+      right: -0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-hero {
+      padding: 1rem 0;
+    }
+
+    .product-hero__title {
+      font-size: 1.75rem;
+    }
+
+    .product-hero__button {
+      padding: 0.625rem 1.5rem;
+      font-size: 0.875rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Product Title",
+      "default": "Amazing Product"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Product Description",
+      "default": "<p>Discover our incredible product that will transform your experience. Built with premium materials and innovative design.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Product Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "secondary_image",
+      "label": "Secondary Image (Optional)"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_style",
+      "label": "Color Scheme",
+      "default": "background-1"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout Direction",
+      "options": [
+        {
+          "value": "image-left",
+          "label": "Image on Left"
+        },
+        {
+          "value": "image-right",
+          "label": "Image on Right"
+        }
+      ],
+      "default": "image-left"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Hero"
+    }
+  ]
+}
+{% endschema %} 
