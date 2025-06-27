@@ -1,4 +1,7 @@
-# 🚀 Quick Setup Guide
+# Quick Setup Guide
+
+![Real Working Architecture](https://github.com/user-attachments/assets/08ab10c2-11b1-44b8-b096-a8eee20fe977)
+
 
 ## Prerequisites
 
