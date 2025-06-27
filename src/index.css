@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for better typography */
+@layer base {
+  html {
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  body {
+    @apply antialiased;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  .button-primary {
+    @apply inline-block px-8 py-3 bg-shopify-500 text-white font-semibold rounded-md hover:bg-shopify-600 hover:-translate-y-0.5 transition-all duration-200 shadow-md;
+  }
+
+  .product-hero-image {
+    @apply w-full h-auto rounded-lg shadow-lg;
+  }
+
+  .product-hero-image-secondary {
+    @apply w-full h-auto rounded-lg shadow-md;
+  }
+}
