@@ -57,7 +57,7 @@ HeroCraft/
 └── README.md                   # Project overview
 ```
 
-## 🎯 What You'll See
+## What You'll See
 
 1. **Header Section**: Project title and description
 2. **React Component Demo**: Product Hero with sample data
@@ -91,7 +91,7 @@ Edit `sections/product-hero.liquid` to modify:
 - CSS styling
 - Schema settings
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 
@@ -139,7 +139,7 @@ module.exports = {
    - Tablet (768px)
    - Desktop (1024px+)
 
-## 🚀 Next Steps
+## Next Steps
 
 ### For Shopify Development
 
@@ -174,9 +174,7 @@ module.exports = {
 4. Test thoroughly
 5. Submit a pull request
 
-## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
