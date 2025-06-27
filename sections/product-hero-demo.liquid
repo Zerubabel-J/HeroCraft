@@ -1,0 +1,61 @@
+{% comment %}
+  Demo template showing how to use the Product Hero section
+  This would typically be included in a page template or collection template
+{% endcomment %}
+
+{%- liquid
+  assign page_title = page.title | default: 'Featured Products'
+  assign page_content = page.content
+-%}
+
+<div class="page-width">
+  <header class="section-header text-center">
+    <h1 class="section-header__title">{{ page_title }}</h1>
+    {%- if page_content != blank -%}
+      <div class="section-header__description">
+        {{ page_content }}
+      </div>
+    {%- endif -%}
+  </header>
+</div>
+
+{% comment %}
+  The Product Hero section will be added via the theme customizer
+  or can be included programmatically like this:
+{% endcomment %}
+
+{%- section 'product-hero' -%}
+
+{% comment %}
+  Additional sections can be added here
+{% endcomment %}
+
+<style>
+  .section-header {
+    padding: 2rem 0;
+  }
+  
+  .section-header__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+  }
+  
+  .section-header__description {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: rgba(var(--color-foreground), 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 768px) {
+    .section-header__title {
+      font-size: 2rem;
+    }
+    
+    .section-header__description {
+      font-size: 1rem;
+    }
+  }
+</style> 
